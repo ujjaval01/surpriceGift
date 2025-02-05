@@ -16,7 +16,22 @@
             text-align: center;
             padding: 20px;
         }
+        #password-container {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        .password-box {
+            width: 50px;
+            height: 50px;
+            font-size: 24px;
+            text-align: center;
+            border: 2px solid #ff4081;
+            border-radius: 10px;
+            outline: none;
+        }
         #gift-container {
+            display: none;
             cursor: pointer;
             position: relative;
             transition: transform 0.3s ease;
@@ -58,15 +73,27 @@
             video {
                 max-width: 90%;
             }
+            .password-box {
+                width: 40px;
+                height: 40px;
+                font-size: 20px;
+            }
         }
     </style>
 </head>
 <body>
-    <h1>🎁 A Special video for You Bachee😍! 🎁</h1>
-    <p>Click the button below to reveal something amazing just for you! ❤️</p>
+    <h1>🎁 A Special Surprise for You! 🎁</h1>
+    <p>Enter the 4-digit code to unlock your surprise! ❤️</p>
+    
+    <div id="password-container">
+        <input type="text" class="password-box" maxlength="1" oninput="moveToNext(this, 0)">
+        <input type="text" class="password-box" maxlength="1" oninput="moveToNext(this, 1)">
+        <input type="text" class="password-box" maxlength="1" oninput="moveToNext(this, 2)">
+        <input type="text" class="password-box" maxlength="1" oninput="moveToNext(this, 3)">
+    </div>
     
     <div id="gift-container" onclick="revealVideo()">
-        Click to Reveal Your Surprise video
+        Click to Reveal Your Surprise
     </div>
     
     <div id="video-container" class="mt-4">
@@ -77,6 +104,23 @@
     </div>
 
     <script>
+        function moveToNext(input, index) {
+            let passwordBoxes = document.querySelectorAll(".password-box");
+            if (input.value.length === 1 && index < 3) {
+                passwordBoxes[index + 1].focus();
+            }
+            checkPassword();
+        }
+        
+        function checkPassword() {
+            let passwordBoxes = document.querySelectorAll(".password-box");
+            let enteredPassword = "";
+            passwordBoxes.forEach(box => enteredPassword += box.value);
+            if (enteredPassword === "0506") {
+                document.getElementById('gift-container').style.display = 'block';
+            }
+        }
+        
         function revealVideo() {
             document.getElementById('gift-container').style.display = 'none';
             document.getElementById('video-container').style.display = 'block';
