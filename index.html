@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Surprise Video Gift</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #ff758c, #ff7eb3);
+            flex-direction: column;
+            text-align: center;
+            padding: 20px;
+        }
+        #gift-container {
+            cursor: pointer;
+            position: relative;
+            transition: transform 0.3s ease;
+            background: #fff;
+            padding: 20px 40px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            font-size: 20px;
+            font-weight: bold;
+            color: #ff4081;
+        }
+        #gift-container:hover {
+            transform: scale(1.1);
+        }
+        #video-container {
+            display: none;
+            width: 100%;
+            max-width: 700px;
+        }
+        video {
+            width: 100%;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        h1 {
+            color: #fff;
+            margin-bottom: 20px;
+        }
+        p {
+            color: #fff;
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+        @media (max-width: 768px) {
+            #gift-container {
+                font-size: 16px;
+                padding: 15px 30px;
+            }
+            video {
+                max-width: 90%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>🎁 A Special video for You Bachee😍! 🎁</h1>
+    <p>Click the button below to reveal something amazing just for you! ❤️</p>
+    
+    <div id="gift-container" onclick="revealVideo()">
+        Click to Reveal Your Surprise video
+    </div>
+    
+    <div id="video-container" class="mt-4">
+        <video id="gift-video" class="rounded shadow-lg" loop autoplay>
+            <source src="video.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
+    <script>
+        function revealVideo() {
+            document.getElementById('gift-container').style.display = 'none';
+            document.getElementById('video-container').style.display = 'block';
+            document.getElementById('gift-video').play();
+        }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
